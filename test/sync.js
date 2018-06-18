@@ -31,4 +31,5 @@ const Meizi = { doAsync, doSync, doElse };
         console.log('卫生间通知妹子来洗澡');
         Meizi.doAsync('妹子洗澡', 2000)        
     })
+    Meizi.doElse('妹子去忙别的了')
 })()
