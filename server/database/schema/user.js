@@ -42,7 +42,7 @@ userSchema.virtual('isLocked').get(() => {
     return !!(this.lockUntil && this.lockUntil > Date.now());
 })
 
-userSchema.pre('save', next => {
+userSchema.pre('save', function (next) {
     if (user.isModifined('password')) return next();
     
     bcrypt.genSalt(SALT_WROK_FACTOR, (err, salt) => {
@@ -66,7 +66,7 @@ userSchema.methods = {
             })
         })
     },
-    incLoginAttepts: (user) => {
+    incLoginAttepts: function (user) {
         return new Promise(() => {
             if (this.lockUntil && this.lockUntil < Date.now()) {
                 this.update({

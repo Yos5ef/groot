@@ -11,7 +11,7 @@ const categorySchema = new Schema({
         type: ObjectId,
         ref: 'Movie'
     }],
-    mata: {
+    meta: {
         createdAt: {
             type: Date,
             default: Date.now()
@@ -23,7 +23,7 @@ const categorySchema = new Schema({
     }
 })
 
-categorySchema.pre('save', next => {
+categorySchema.pre('save', function (next) {
     if (this.isNew) {
         this.meta.createdAt = this.meta.updatedAt = Date.now();
     } else {
