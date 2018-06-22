@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Yos5ef/groot#readme",
   "dependencies": {
+    "bcrypt": "^2.0.1",
+    "glob": "^7.1.2",
     "koa": "^2.5.1",
     "koa-views": "^6.1.4",
     "mongoose": "^5.1.6",

@@ -1,7 +1,7 @@
-const mogoose = require('mongoose');
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
-const Mixed = Schema.types.Mixed;
+const Mixed = Schema.Types.Mixed;
 const SALT_WROK_FACTOR = 10;
 const MAX_LOGIN_ATTEMPTS = 5;
 const LOCK_TIME = 2 * 60 * 60 * 1000;

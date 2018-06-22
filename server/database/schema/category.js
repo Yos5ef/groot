@@ -1,31 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Mixed = Schema.Types.Mixed;
 const ObjectId = Schema.Types.ObjectId;
 
-const MovieSchema = new Schema({
-    doubanId: {
+const categorySchema = new Schema({
+    name: {
         unique: true,
         type: String
     },
-    category: [{
-        type:ObjectId,
-        ref: 'Category'
+    movies: [{
+        type: ObjectId,
+        ref: 'Movie'
     }],
-    rate: Number,
-    title: String,
-    summary: String,
-    video: String,
-    poster: String,
-    cover: String,
-    videoKey: String,
-    posterKey: String,
-    coverKey: String,
-    rawTitle: String,
-    movieType: [String],
-    pubdate: Mixed, 
-    year: Number,
-    tags: Array,
     mata: {
         createdAt: {
             type: Date,
@@ -38,7 +23,7 @@ const MovieSchema = new Schema({
     }
 })
 
-MovieSchema.pre('save', next => {
+categorySchema.pre('save', next => {
     if (this.isNew) {
         this.meta.createdAt = this.meta.updatedAt = Date.now();
     } else {
@@ -48,4 +33,4 @@ MovieSchema.pre('save', next => {
 })
 
 
-mongoose.model('Movie', MovieSchema);
+mongoose.model('Category', categorySchema);
